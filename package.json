@@ -10,6 +10,7 @@
     "build-dev": "webpack --config webpack.dev.js",
     "run-dev": "webpack-dev-server  --config webpack.dev.js --open"
   },
+  "proxy": "http://localhost:8081",
   "keywords": [],
   "author": "",
   "license": "ISC",

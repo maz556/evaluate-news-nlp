@@ -16,7 +16,11 @@ async function handleSubmit(event) {
         body: JSON.stringify({ input: formInput, type: formType})
     })
     const data = await resp.json()
-    document.getElementById('results').innerHTML = data.score
+    document.getElementById('score').innerHTML = `Polarity: ${data.score}`;
+    document.getElementById('agreement').innerHTML = `Agreement: ${data.agreement}`;
+    document.getElementById('subjectivity').innerHTML = `Subjectivity: ${data.subjectivity}`;
+    document.getElementById('irony').innerHTML = `Irony: ${data.irony}`;
+    document.getElementById('confidence').innerHTML = `Confidence: ${data.confidence}`;
 }
 
 export { handleSubmit }

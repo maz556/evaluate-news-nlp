@@ -44,7 +44,7 @@ function getApiUrl(data) {
 
 app.post('/eval', async (req, res) => {
     try {
-        console.log('Sending submission to MeaningClougAPI...')
+        console.log('Sending submission to MeaningCloud API...')
         const mc_resp = await fetch(getApiUrl(req.body), {
             method: 'POST',
             headers: {
@@ -54,7 +54,13 @@ app.post('/eval', async (req, res) => {
         });
         console.log("Response recieved!")
         const mc_json = await mc_resp.json()
-        res.send({ score: mc_json.score_tag })
+        res.send({
+            score: mc_json.score_tag,
+            agreement: mc_json.agreement,
+            subjectivity: mc_json.subjectivity,
+            irony: mc_json.irony,
+            confidence: `${mc_json.confidence}%`
+        })
     } catch(err) {
         res.status(500).send(err.message)
     }
