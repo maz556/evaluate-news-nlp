@@ -1,16 +1,22 @@
-function handleSubmit(event) {
+async function handleSubmit(event) {
     event.preventDefault()
-
+    
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
-
+    const formInput = document.getElementById('source-text').value;
+    const formType = Main.checkText(formInput);
+    if (formType == Main.formTypes.INV) {
+        alert("The submitted text is invalid! Please submit a valid text or url!")
+    }
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+    const resp = await fetch("/eval", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input: formInput, type: formType})
     })
+    const data = await resp.json()
+    document.getElementById('results').innerHTML = data.score
 }
 
 export { handleSubmit }

@@ -3,11 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
     </head>
 
     <body>
@@ -23,9 +18,10 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form class="" onsubmit="return Main.handleSubmit(event)">
+                    <!-- <input id="source-text" type="text" name="input" value="" onblur="onBlur()" placeholder="Text to evaluate"> -->
+                    <input id="source-text" type="text" name="input" value="" placeholder="Text to evaluate">
+                    <input type="submit" name="" value="submit" onclick="return Main.handleSubmit(event)" onsubmit="return Main.handleSubmit(event)">
                 </form>
             <section>
 
@@ -36,8 +32,18 @@
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>
+                What are you looking at? t('o't)
+            </p>
         </footer>
-
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>
