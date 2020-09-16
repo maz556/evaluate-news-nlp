@@ -1,0 +1,4 @@
+{
+    "exec": "npm start",
+    "watch": "src/server"
+}

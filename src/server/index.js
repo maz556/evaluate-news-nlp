@@ -52,7 +52,7 @@ app.post('/eval', async (req, res) => {
             },
             body: JSON.stringify({})
         });
-        console.log("Response recieved!")
+        console.log("Response received!!")
         const mc_json = await mc_resp.json()
         res.send({
             score: mc_json.score_tag,

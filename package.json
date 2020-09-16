@@ -1,14 +1,15 @@
 {
   "name": "evaluate-news-nlp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "/dist-server/index.js",
   "scripts": {
     "test": "jest",
     "start": "node dist-server/index.js",
-    "build-server": "babel src/server --out-dir dist-server",
+    "prestart": "babel src/server --out-dir dist-server",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js",
-    "run-dev": "webpack-dev-server  --config webpack.dev.js --open"
+    "dev-server": "webpack-dev-server  --config webpack.dev.js --open",
+    "watch-server": "nodemon"
   },
   "proxy": "http://localhost:8081",
   "keywords": [],
@@ -40,6 +41,7 @@
     "jest": "^26.4.2",
     "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",

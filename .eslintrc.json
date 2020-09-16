@@ -15,5 +15,6 @@
     "globals": {
         "Main": "readonly"
     },
-    "plugins": ["jest"]
+    "plugins": ["jest"],
+    "ignorePatterns": ["dist"]
 }
